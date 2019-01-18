@@ -1,5 +1,9 @@
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.io.*;
 import java.util.Scanner;
+import java.util.function.BiPredicate;
+
 import javax.swing.*;
 
 
@@ -7,7 +11,7 @@ import javax.imageio.ImageIO; // read image
 
 // https://www.javatpoint.com/java-swing
 // Currenty using swing by association
-public class chess {
+public class othello {
     static final int PIECE_SIZE = 64;
     static final int TOP_MARGIN = 0;
     static final int BOTTOM_MARGIN = TOP_MARGIN;
@@ -20,15 +24,17 @@ public class chess {
     public static void main(String[] args) {
 
         JFrame frame = new JFrame("My First GUI"); //Initializes a JFrame
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Exits JFrame on Close
         // Piece size: 64 * 64
         frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT); // Set Frame size
-        JButton button = new JButton("Play Chess");
-        button.setBounds(300, 100, 200, 20); //x,y,width,height
-        JLabel info = new JLabel("Welcome to Peter's Chess Game."); // Create a button
+        board boardName = new board();
+        // button.setBounds(300, 100, 200, 20); //x,y,width,height
+        JLabel info = new JLabel("Welcome to Othello,"); // Create a button
         info.setBounds(500, 100, 200, 20); // x,y,width,height
-        frame.add(button); // Adds Button to content pane of frame
-        frame.add(info);
+        mainPanel.add(boardName, BorderLayout.CENTER);
+        mainPanel.add(info, BorderLayout.PAGE_START);
         frame.setVisible(true); //Set frame visibility
     }
 }
